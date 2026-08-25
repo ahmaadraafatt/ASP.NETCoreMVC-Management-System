@@ -1,0 +1,14 @@
+﻿@model EmpDeptColorTempMsgCitysViewModel
+
+@{
+	ViewData["Title"] = "DetailsVM";
+}
+<h1 style="color:@Model.Color">Details</h1>
+@Model.EmpName
+@Model.DeptName
+<select>
+@foreach (var item in Model.Citys)
+	{
+      <option>@item</option>
+	}
+</select>

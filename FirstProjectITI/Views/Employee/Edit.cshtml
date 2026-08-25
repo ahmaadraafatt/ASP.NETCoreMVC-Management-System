@@ -1,0 +1,41 @@
+﻿@model EmpWithDeptListViewModel
+@{
+	ViewData["Title"] = "Edit";
+}
+<h1>Edit</h1>
+<form method="post" action="/Employee/SaveEdit/@Model.Id">
+	<div>
+		@Html.TextBoxFor(e=> e.Name)
+	</div>
+	<div>
+		@Html.TextBoxFor(e=> e.Address)
+	</div>
+	<div>
+		@Html.TextBoxFor(e => e.ImageURL)
+	</div>
+	<div>
+		@Html.EditorFor(e => e.Salary)
+	</div>
+	<div>
+		@Html.TextBoxFor(e => e.JobTitle)
+	</div>
+	<div>
+		<label>DepartmentID</label>
+		<select id="DepartmentID" name="DepartmentID" class="form form-control">
+			@foreach(var item in Model.DeptList)
+			{
+				if(Model.DepartmentID == item.Id)
+				{
+					<option value="@item.Id" selected>@item.Name</option>
+				}
+				else
+				{
+					<option value="@item.Id">@item.Name</option>
+				}
+			}
+		</select>
+	</div>
+	<input type="submit" value="Save" class="btn btn-success"/>
+</form>
+@Html.ActionLink("Back","Index","Employee")
+@Html.ActionLink("Details","Details","Employee",new{Model.Id,name=Model.Name})
